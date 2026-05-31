@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+<head>
+  
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>用户注册 - CityGo</title>
+  <link rel="stylesheet" href="css/common.css" />
+  <link rel="stylesheet" href="css/register.css" />
+</head>
+<body class="auth-body">
+  
+  <header class="topbar glass">
+    <div class="logo">CityGo<span>城市旅行</span></div>
+    <nav>
+      <a href="index.html">首页</a>
+      <a href="footprint.html">旅行足迹</a>
+      <a href="diary.html">旅行日记</a>
+      <a href="wishlist.html">心愿单</a>
+      <a href="category.html">分类浏览</a>
+      <a href="about.html">关于网站</a>
+      <a href="contact.html">联系我们</a>
+      <a href="login.html" id="loginLink">登录</a>
+      <a href="register.html" id="registerLink" class="active btn-nav">注册</a>
+      <button class="logout-btn hidden" id="logoutBtn">退出登录</button>
+    </nav>
+  </header>
+
+  
+  <main class="auth-container">
+    <section class="auth-card">
+      <p class="eyebrow">Create Account</p>
+      <h1>用户注册</h1>
+      <p class="auth-tip">创建账号后，可体验城市收藏与心愿单功能。</p>
+      
+      <form id="registerForm">
+        <label>用户名</label>
+        <input type="text" id="regName" placeholder="请输入用户名，不少于2位" />
+        <span class="error" id="regNameError"></span>
+
+        <label>邮箱</label>
+        <input type="email" id="regEmail" placeholder="请输入邮箱" />
+        <span class="error" id="regEmailError"></span>
+
+        <label>密码</label>
+        <input type="password" id="regPwd" placeholder="请输入密码，不少于6位" />
+        <span class="error" id="regPwdError"></span>
+
+        <label>确认密码</label>
+        <input type="password" id="regConfirm" placeholder="请再次输入密码" />
+        <span class="error" id="regConfirmError"></span>
+
+        <button type="submit" class="primary-btn full">注册</button>
+        <p class="success" id="regSuccess"></p>
+      </form>
+      <p class="switch-link">已有账号？<a href="login.html">去登录</a></p>
+    </section>
+  </main>
+
+  
+  <script src="auth.js"></script>
+  <script src="user-nav.js"></script>
+  <script src="scroll-reveal.js"></script>
+</body>
+</html>

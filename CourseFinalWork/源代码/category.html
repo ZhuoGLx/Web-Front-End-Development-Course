@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+<head>
+  
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>分类浏览 - CityGo</title>
+  <link rel="stylesheet" href="css/common.css" />
+  <link rel="stylesheet" href="css/category.css" />
+</head>
+<body class="category-body">
+  
+  <header class="topbar">
+    <div class="logo">CityGo<span>城市旅行</span></div>
+    <nav>
+      <a href="index.html">首页</a>
+      <a href="footprint.html">旅行足迹</a>
+      <a href="diary.html">旅行日记</a>
+      <a href="wishlist.html">心愿单</a>
+      <a href="category.html" class="active">分类浏览</a>
+      <a href="about.html">关于网站</a>
+      <a href="contact.html">联系我们</a>
+      <a href="login.html" id="loginLink">登录</a>
+      <a href="register.html" id="registerLink" class="btn-nav">注册</a>
+      <button class="logout-btn hidden" id="logoutBtn">退出登录</button>
+    </nav>
+  </header>
+
+  
+  <main class="page-container category-page">
+    <section class="page-title">
+      <p class="eyebrow">Browse by Category</p>
+      <h1 id="categoryTitle">全部城市</h1>
+      <p id="categoryDesc">以下是该分类下的所有城市推荐。</p>
+    </section>
+
+    
+    <div class="category-filter-bar">
+      <a href="category.html?type=all" class="cat-btn active" data-type="all">全部</a>
+      <a href="category.html?type=food" class="cat-btn" data-type="food">美食城市</a>
+      <a href="category.html?type=nature" class="cat-btn" data-type="nature">自然风光</a>
+      <a href="category.html?type=history" class="cat-btn" data-type="history">历史文化</a>
+      <a href="category.html?type=modern" class="cat-btn" data-type="modern">现代都市</a>
+    </div>
+
+    
+    <div class="category-grid" id="categoryGrid"></div>
+  </main>
+
+  
+  <footer>
+    <div class="footer-content">
+      <div class="footer-col">
+        <div class="logo" style="font-size: var(--text-lg);">CityGo<span>城市旅行</span></div>
+        <p>© 2026 CityGo 城市旅行介绍网</p>
+        <p>前端课程大作业示例</p>
+      </div>
+      <div class="footer-col">
+        <h4>技术支持</h4>
+        <p>HTML5 / CSS3 / JavaScript</p>
+        <p>localStorage 模拟数据库</p>
+        <p>响应式布局 · 移动优先</p>
+      </div>
+      <div class="footer-col">
+        <h4>分享与关注</h4>
+        <div class="share-links">
+          <a href="#">微博</a>
+          <a href="#">微信</a>
+          <a href="#">小红书</a>
+          <a href="#">豆瓣</a>
+        </div>
+        <p>📧 citygo@example.com</p>
+      </div>
+    </div>
+  </footer>
+
+  
+  <script src="city-modal.js"></script>
+  <script>
+    const cities = [
+      {
+        id: "chengdu",
+        name: "成都",
+        type: "food",
+        img: "resource/images/chengdu/chengdu_main.jpg",
+        intro: "一座将烟火气与慢生活融合在一起的城市，适合品尝美食、感受茶馆文化和城市休闲氛围。",
+        scenery: "宽窄巷子、锦里、青城山、都江堰、熊猫基地",
+        food: "火锅、串串香、担担面、钟水饺、兔头",
+        culture: "巴蜀文化、茶馆文化、慢生活节奏",
+        season: "3月—6月，9月—11月",
+        tags: ["美食之都", "慢生活", "熊猫"]
+      },
+      {
+        id: "hangzhou",
+        name: "杭州",
+        type: "nature",
+        img: "resource/images/hangzhou/hangzhou_main.jpg",
+        intro: "杭州以西湖风光和江南气质闻名，适合城市漫步、湖边骑行和古街游览。",
+        scenery: "西湖、灵隐寺、千岛湖、河坊街、京杭大运河",
+        food: "西湖醋鱼、龙井虾仁、片儿川、东坡肉",
+        culture: "江南文化、茶文化、宋韵文化",
+        season: "3月—5月，9月—10月",
+        tags: ["自然风光", "江南水乡", "茶文化"]
+      },
+      {
+        id: "beijing",
+        name: "北京",
+        type: "history",
+        img: "resource/images/beijing/beijing_main.jpg",
+        intro: "北京拥有深厚的历史积淀和现代都市活力，是了解中国传统文化与城市发展的重要窗口。",
+        scenery: "故宫、天坛、长城、颐和园、什刹海",
+        food: "北京烤鸭、炸酱面、豆汁、卤煮",
+        culture: "宫廷文化、胡同文化、京味民俗",
+        season: "4月—6月，9月—10月",
+        tags: ["历史古都", "文化地标", "胡同"]
+      },
+      {
+        id: "shanghai",
+        name: "上海",
+        type: "modern",
+        img: "resource/images/shanghai/shanghai_main.jpg",
+        intro: "上海兼具摩登都市、海派文化与精致生活方式，适合城市观光和夜景摄影。",
+        scenery: "外滩、陆家嘴、武康路、豫园、南京路",
+        food: "生煎包、小笼包、本帮菜、葱油拌面",
+        culture: "海派文化、城市建筑、商业文明",
+        season: "3月—5月，10月—11月",
+        tags: ["现代都市", "夜景", "海派文化"]
+      },
+      {
+        id: "xiamen",
+        name: "厦门",
+        type: "nature",
+        img: "resource/images/xiamen/xiamen_main.jpg",
+        intro: "厦门是一座清新的海滨城市，适合看海、骑行、拍照和体验文艺街区。",
+        scenery: "鼓浪屿、环岛路、曾厝垵、厦门大学、南普陀寺",
+        food: "沙茶面、海蛎煎、土笋冻、花生汤",
+        culture: "闽南文化、海岛生活、文艺街区",
+        season: "10月—次年4月",
+        tags: ["海滨城市", "文艺", "闽南风情"]
+      },
+      {
+        id: "chongqing",
+        name: "重庆",
+        type: "food",
+        img: "resource/images/chongqing/chongqing_main.jpg",
+        intro: "重庆以山城地貌、立体交通和热辣美食吸引游客，是极具辨识度的网红旅行城市。",
+        scenery: "洪崖洞、解放碑、长江索道、磁器口、南山夜景",
+        food: "重庆火锅、小面、酸辣粉、毛血旺",
+        culture: "山城文化、码头文化、夜景文化",
+        season: "3月—5月，9月—11月",
+        tags: ["山城", "火锅", "夜景"]
+      },
+      {
+        id: "guangzhou",
+        name: "广州",
+        type: "food",
+        img: "resource/images/guangzhou/guangzhou_main.jpg",
+        intro: "广州是粤菜发源地之一，早茶文化浓厚，兼具历史底蕴与现代活力。",
+        scenery: "广州塔、沙面、陈家祠、白云山、长隆",
+        food: "虾饺、肠粉、烧鹅、煲仔饭、双皮奶",
+        culture: "岭南文化、广府文化、商贸传统",
+        season: "10月—12月，3月—5月",
+        tags: ["美食之都", "早茶文化", "岭南风情"]
+      },
+      {
+        id: "nanjing",
+        name: "南京",
+        type: "history",
+        img: "resource/images/nanjing/nanjing_main.jpg",
+        intro: "六朝古都，民国遗韵，秦淮河畔感受历史与现代的交融。",
+        scenery: "中山陵、夫子庙、总统府、玄武湖、明孝陵",
+        food: "盐水鸭、鸭血粉丝汤、汤包、梅花糕",
+        culture: "六朝文化、民国文化、科举文化",
+        season: "3月—5月，9月—11月",
+        tags: ["历史古都", "民国风情", "秦淮河"]
+      },
+      {
+        id: "xian",
+        name: "西安",
+        type: "history",
+        img: "resource/images/xian/xian_main.jpg",
+        intro: "世界四大古都之一，秦汉唐文化汇聚，美食与历史并重。",
+        scenery: "兵马俑、大雁塔、古城墙、回民街、华清池",
+        food: "肉夹馍、凉皮、羊肉泡馍、Biángbiáng面",
+        culture: "秦汉文化、盛唐文化、丝路起点",
+        season: "3月—6月，9月—11月",
+        tags: ["历史古都", "兵马俑", "碳水天堂"]
+      }
+    
+    ];
+    
+
+    const allowedTypes = ['all', 'food', 'nature', 'history', 'modern'];
+    const titleMap = {
+      all: '全部城市',
+      food: '美食城市',
+      nature: '自然风光',
+      history: '历史文化',
+      modern: '现代都市'
+    };
+    const descMap = {
+      all: '浏览所有城市推荐',
+      food: '寻找美食之都，体验地道风味',
+      nature: '拥抱自然，享受山水之美',
+      history: '探寻历史遗迹，感受文化沉淀',
+      modern: '漫步摩登都市，发现现代魅力'
+    };
+
+    const categoryTitle = document.getElementById('categoryTitle');
+    const categoryDesc = document.getElementById('categoryDesc');
+    const grid = document.getElementById('categoryGrid');
+    const buttons = document.querySelectorAll('.cat-btn');
+
+    function getCurrentType() {
+      const urlType = new URLSearchParams(window.location.search).get('type');
+      return allowedTypes.includes(urlType) ? urlType : 'all';
+    }
+
+    function updateActiveButton(type) {
+      buttons.forEach(btn => btn.classList.toggle('active', btn.dataset.type === type));
+    }
+
+    function buildCards(type) {
+      const filtered = type === 'all' ? cities : cities.filter(city => city.type === type);
+      if (filtered.length === 0) {
+        return '<div class="empty-state category-empty">暂无城市，请尝试其他分类。</div>';
+      }
+      return filtered.map((city, index) => `
+        <article class="city-card category-card-reveal" data-city-id="${city.id}" style="--category-delay:${Math.min(index, 11) * 0.09}s;">
+          <img src="${city.img}" alt="${city.name}" />
+          <div class="city-card-body">
+            <h3>${city.name}</h3>
+            <p>${city.intro}</p>
+            <div class="tag-row">${city.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}</div>
+            <div class="card-actions">
+              <button class="small-btn detail-btn" type="button" data-id="${city.id}">查看详情</button>
+              <a class="small-btn page-btn" href="city.html?id=${city.id}&from=category">详细介绍</a>
+              <button class="small-btn collect-btn" type="button" data-id="${city.id}">加入心愿单</button>
+            </div>
+          </div>
+        </article>
+      `).join('');
+    }
+
+    let categoryCardObserver = null;
+
+    function initCategoryCardReveal() {
+      const cards = Array.from(grid.querySelectorAll('.category-card-reveal'));
+      if (categoryCardObserver) categoryCardObserver.disconnect();
+      if (!cards.length) return;
+
+      if (!('IntersectionObserver' in window)) {
+        cards.forEach(card => card.classList.add('category-card-visible'));
+        return;
+      }
+
+      categoryCardObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          const card = entry.target;
+          if (entry.isIntersecting) {
+            card.classList.add('category-card-visible');
+            return;
+          }
+
+          if (entry.boundingClientRect.top > window.innerHeight || entry.boundingClientRect.bottom < 0) {
+            card.classList.add('category-card-resetting');
+            card.classList.remove('category-card-visible');
+            requestAnimationFrame(() => {
+              requestAnimationFrame(() => card.classList.remove('category-card-resetting'));
+            });
+          }
+        });
+      }, { threshold: 0.16, rootMargin: '0px 0px -4% 0px' });
+
+      cards.forEach(card => categoryCardObserver.observe(card));
+    }
+
+    function renderCategory(type, options = {}) {
+      const shouldPushState = options.pushState !== false;
+      const url = `category.html?type=${type}`;
+      updateActiveButton(type);
+      categoryTitle.innerText = titleMap[type];
+      categoryDesc.innerText = descMap[type];
+
+      grid.classList.add('category-grid-switching');
+      window.setTimeout(() => {
+        grid.innerHTML = buildCards(type);
+        grid.classList.remove('category-grid-switching');
+        initCategoryCardReveal();
+      }, 160);
+
+      if (shouldPushState) {
+        history.pushState({ type }, '', url);
+      }
+    }
+
+    buttons.forEach(btn => {
+      btn.addEventListener('click', function (event) {
+        event.preventDefault();
+        const nextType = this.dataset.type;
+        if (!allowedTypes.includes(nextType)) return;
+        renderCategory(nextType);
+      });
+    });
+
+    window.addEventListener('popstate', () => {
+      renderCategory(getCurrentType(), { pushState: false });
+    });
+
+    renderCategory(getCurrentType(), { pushState: false });
+
+    if (window.CityGoCityModal) {
+      window.CityGoCityModal.init(cities);
+    }
+
+    grid.addEventListener('click', function (event) {
+      const actionTarget = event.target.closest('button, a');
+      const card = event.target.closest('.city-card');
+
+      if (actionTarget && actionTarget.classList.contains('page-btn')) return;
+
+      if (actionTarget) {
+        const id = actionTarget.dataset.id;
+        if (!id) return;
+        const city = cities.find(item => item.id === id);
+        if (actionTarget.classList.contains('detail-btn') && window.CityGoCityModal) {
+          window.CityGoCityModal.open(id);
+        }
+        if (actionTarget.classList.contains('collect-btn') && window.CityGoCityModal) {
+          window.CityGoCityModal.addToWishlist(city);
+        }
+        return;
+      }
+
+      if (card && card.dataset.cityId && window.CityGoCityModal) {
+        window.CityGoCityModal.open(card.dataset.cityId);
+      }
+    });
+
+    function updateNavStatus() {
+      const user = JSON.parse(localStorage.getItem("citygo_current_user") || "null");
+      const loginLink = document.getElementById("loginLink");
+      const registerLink = document.getElementById("registerLink");
+      const logoutBtn = document.getElementById("logoutBtn");
+      if (user) {
+        loginLink.innerText = user.username;
+        loginLink.href = "user.html";
+        registerLink.classList.add("hidden");
+        logoutBtn.classList.remove("hidden");
+      }
+      if (logoutBtn) {
+        logoutBtn.addEventListener("click", () => {
+          localStorage.removeItem("citygo_current_user");
+          location.reload();
+        });
+      }
+    }
+    updateNavStatus();
+  </script>
+
+  <style>
+    
+    .category-body {
+      background:
+        radial-gradient(circle at 12% 16%, rgba(22,119,255,0.16), transparent 28%),
+        radial-gradient(circle at 88% 10%, rgba(255,159,67,0.18), transparent 24%),
+        linear-gradient(135deg, #eef6ff 0%, #ffffff 48%, #fff8ef 100%);
+    }
+
+    .category-page {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .category-page::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      background:
+        linear-gradient(135deg, rgba(244,248,255,0.80), rgba(255,255,255,0.86)),
+        url("resource/images/hangzhou/hangzhou_westlake_morning.jpg") center/cover no-repeat;
+      filter: blur(8px) saturate(1.08);
+      transform: scale(1.04);
+      opacity: 0.42;
+      pointer-events: none;
+    }
+
+    .category-filter-bar {
+      position: relative;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items: center;
+      width: fit-content;
+      max-width: 100%;
+      margin: 0 0 30px;
+      padding: 12px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.88), rgba(238,246,255,0.74));
+      border: 1px solid rgba(255,255,255,0.78);
+      box-shadow: 0 18px 42px rgba(31, 64, 125, 0.12);
+      backdrop-filter: blur(18px);
+    }
+
+    .category-filter-bar::before {
+      content: "";
+      position: absolute;
+      inset: 5px;
+      border-radius: inherit;
+      background: linear-gradient(135deg, rgba(255,255,255,0.52), rgba(22,119,255,0.07));
+      pointer-events: none;
+    }
+
+    .cat-btn {
+      position: relative;
+      z-index: 1;
+      padding: 9px 19px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.76);
+      border: 1px solid rgba(22,119,255,0.10);
+      color: #305070;
+      text-decoration: none;
+      font-weight: 600;
+      box-shadow: 0 8px 18px rgba(31, 64, 125, 0.06);
+      transition:
+        transform 0.34s ease,
+        box-shadow 0.34s ease,
+        background 0.34s ease,
+        color 0.34s ease,
+        border-color 0.34s ease;
+    }
+
+    .cat-btn.active {
+      color: #fff;
+      border-color: rgba(22,119,255,0.72);
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      box-shadow: 0 14px 28px rgba(22,119,255,0.22);
+      transform: translateY(-1px);
+    }
+
+    .cat-btn:hover {
+      transform: translateY(-3px);
+      border-color: rgba(22,119,255,0.35);
+      box-shadow: 0 16px 32px rgba(22,119,255,0.16);
+    }
+
+    .category-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, 300px);
+      justify-content: center;
+      gap: 26px;
+      padding: 24px;
+      border-radius: 30px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.84), rgba(238,246,255,0.68));
+      border: 1px solid rgba(255,255,255,0.78);
+      box-shadow: 0 22px 54px rgba(31, 64, 125, 0.10);
+      transition: opacity 0.34s ease, transform 0.34s ease, filter 0.34s ease;
+    }
+
+    .category-grid.category-grid-switching {
+      opacity: 0;
+      transform: translateY(12px);
+      filter: blur(4px);
+    }
+
+    .category-grid .city-card {
+      width: 300px;
+      max-width: 300px;
+      min-height: 0;
+      height: 400px;
+      display: flex;
+      flex-direction: column;
+      border-radius: 26px;
+      overflow: hidden;
+      transition:
+        transform 0.58s cubic-bezier(0.22, 1, 0.36, 1),
+        box-shadow 0.58s cubic-bezier(0.22, 1, 0.36, 1),
+        border-color 0.58s ease,
+        filter 0.58s ease;
+      will-change: transform, box-shadow;
+      backface-visibility: hidden;
+    }
+
+    .category-grid .city-card:hover {
+      transform: translate3d(0, -10px, 0);
+      border-color: rgba(22, 119, 255, 0.32);
+      box-shadow: 0 30px 68px rgba(22, 119, 255, 0.22);
+      filter: saturate(1.04);
+    }
+
+    .category-grid .city-card img {
+      height: 148px;
+      flex: 0 0 148px;
+      object-fit: cover;
+    }
+
+    .category-grid .city-card-body {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      padding: 14px;
+    }
+
+    .category-grid .city-card h3 {
+      font-size: var(--text-lg);
+      margin-bottom: 6px;
+    }
+
+    .category-grid .city-card p {
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      font-size: var(--text-sm);
+      line-height: 1.5;
+      margin-bottom: 10px;
+    }
+
+    .category-grid .tag-row {
+      gap: 6px;
+      margin-top: auto;
+      margin-bottom: 8px;
+    }
+
+    .category-grid .tag {
+      font-size: var(--text-xs);
+      padding: 4px 8px;
+    }
+
+    .category-grid .small-btn {
+      padding: 10px;
+      border-radius: 12px;
+      font-size: var(--text-sm);
+    }
+
+    .category-grid .card-actions {
+      margin-top: auto;
+      display: grid;
+      grid-template-columns: 0.92fr 0.92fr 1.28fr;
+      gap: 8px;
+      align-items: stretch;
+    }
+
+    .category-grid .card-actions .small-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      line-height: 1.5;
+      white-space: nowrap;
+      padding-left: 9px;
+      padding-right: 9px;
+    }
+
+    .category-card-reveal {
+      opacity: 0;
+      transform: translate3d(0, 30px, 0) scale(0.98);
+      filter: blur(5px);
+      transition:
+        opacity 0.82s ease var(--category-delay, 0s),
+        transform 0.82s cubic-bezier(0.22, 1, 0.36, 1) var(--category-delay, 0s),
+        filter 0.82s ease var(--category-delay, 0s),
+        box-shadow 0.58s cubic-bezier(0.22, 1, 0.36, 1),
+        border-color 0.58s ease;
+    }
+
+    .category-card-reveal.category-card-visible {
+      opacity: 1;
+      transform: translate3d(0, 0, 0) scale(1);
+      filter: blur(0);
+    }
+
+    .category-card-reveal.category-card-resetting {
+      transition: none;
+    }
+
+    .category-card-reveal.category-card-visible:hover {
+      transform: translate3d(0, -10px, 0) scale(1);
+      border-color: rgba(22, 119, 255, 0.32);
+      box-shadow: 0 30px 68px rgba(22, 119, 255, 0.22);
+      filter: saturate(1.04);
+    }
+
+    .category-empty {
+      grid-column: 1 / -1;
+      width: min(520px, 100%);
+      justify-self: center;
+    }
+
+    @media (max-width: 980px) {
+      .category-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      }
+    }
+
+    @media (max-width: 640px) {
+      .category-filter-bar {
+        width: 100%;
+        justify-content: center;
+        border-radius: 26px;
+      }
+
+      .cat-btn {
+        flex: 1 1 42%;
+        text-align: center;
+      }
+
+      .category-grid {
+        grid-template-columns: minmax(0, 1fr);
+        padding: 18px;
+      }
+
+      .category-grid .city-card {
+        max-width: 100%;
+        height: auto;
+        min-height: 0;
+      }
+    }
+
+    
+    .category-grid {
+      background: linear-gradient(135deg, rgba(224, 238, 255, 0.82), rgba(250, 252, 255, 0.94));
+      border: 1px solid rgba(198, 218, 246, 0.78);
+    }
+
+    .category-grid .city-card {
+      background: #ffffff;
+      border: 1px solid rgba(203, 220, 244, 0.98);
+      box-shadow: 0 16px 36px rgba(31, 64, 125, 0.12);
+    }
+
+    
+    .category-grid .category-card-reveal {
+      opacity: 0;
+      transform: translate3d(0, 34px, 0) scale(0.98);
+      filter: blur(5px);
+      transition:
+        opacity 0.86s ease var(--category-delay, 0s),
+        transform 0.86s cubic-bezier(0.22, 1, 0.36, 1) var(--category-delay, 0s),
+        filter 0.86s ease var(--category-delay, 0s),
+        box-shadow 0.56s cubic-bezier(0.22, 1, 0.36, 1),
+        border-color 0.56s ease,
+        background 0.56s ease;
+    }
+
+    .category-grid .category-card-reveal.category-card-visible {
+      opacity: 1;
+      transform: translate3d(0, 0, 0) scale(1);
+      filter: blur(0);
+    }
+
+    .category-grid .category-card-reveal.category-card-resetting {
+      transition: none;
+    }
+
+    .category-grid .category-card-reveal.category-card-visible:hover {
+      transform: translate3d(0, -10px, 0) scale(1);
+      border-color: rgba(22, 119, 255, 0.32);
+      box-shadow: 0 30px 68px rgba(22, 119, 255, 0.22);
+      filter: saturate(1.04);
+    }
+
+  </style>
+  <script src="user-nav.js"></script>
+  <script src="scroll-reveal.js"></script>
+</body>
+</html>

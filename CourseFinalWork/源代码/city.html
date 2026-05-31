@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+<head>
+  
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>城市详情 - CityGo</title>
+  <link rel="stylesheet" href="css/common.css" />
+  <link rel="stylesheet" href="css/city.css" />
+</head>
+<body>
+  
+  <header class="topbar">
+    <div class="logo">CityGo<span>城市旅行</span></div>
+    <nav>
+      <a href="index.html">首页</a>
+      <a href="footprint.html">旅行足迹</a>
+      <a href="diary.html">旅行日记</a>
+      <a href="wishlist.html">心愿单</a>
+      <a href="category.html">分类浏览</a>
+      <a href="about.html">关于网站</a>
+      <a href="contact.html">联系我们</a>
+      <a href="login.html" id="loginLink">登录</a>
+      <a href="register.html" id="registerLink" class="btn-nav">注册</a>
+      <button class="logout-btn hidden" id="logoutBtn">退出登录</button>
+    </nav>
+  </header>
+
+  
+  <main class="page-container">
+    <section id="cityDetailRoot" class="city-detail-page"></section>
+  </main>
+
+  
+  <footer>
+    <div class="footer-content">
+      <div class="footer-col">
+        <div class="logo" style="font-size: var(--text-lg);">CityGo<span>城市旅行</span></div>
+        <p>© 2026 CityGo 城市旅行介绍网</p>
+        <p>前端课程大作业示例</p>
+      </div>
+      <div class="footer-col">
+        <h4>技术支持</h4>
+        <p>HTML5 / CSS3 / JavaScript</p>
+        <p>localStorage 模拟数据库</p>
+        <p>响应式布局 · 模块滚动浮现</p>
+      </div>
+      <div class="footer-col">
+        <h4>分享与关注</h4>
+        <div class="share-links">
+          <a href="#">微博</a>
+          <a href="#">微信</a>
+          <a href="#">小红书</a>
+          <a href="#">豆瓣</a>
+        </div>
+        <p>📧 citygo@example.com</p>
+      </div>
+    </div>
+  </footer>
+
+  
+  <script src="city.js"></script>
+  <script src="user-nav.js"></script>
+  <script src="scroll-reveal.js"></script>
+</body>
+</html>

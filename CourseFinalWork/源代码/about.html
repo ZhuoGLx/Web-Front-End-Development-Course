@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+<head>
+  
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>关于网站 - CityGo</title>
+  <link rel="stylesheet" href="css/common.css" />
+  <link rel="stylesheet" href="css/about.css" />
+</head>
+<body>
+  
+  <header class="topbar">
+    <div class="logo">CityGo<span>城市旅行</span></div>
+    <nav>
+      <a href="index.html">首页</a>
+      <a href="footprint.html">旅行足迹</a>
+      <a href="diary.html">旅行日记</a>
+      <a href="wishlist.html">心愿单</a>
+      <a href="category.html">分类浏览</a>
+      <a href="about.html" class="active">关于网站</a>
+      <a href="contact.html">联系我们</a>
+      <a href="login.html" id="loginLink">登录</a>
+      <a href="register.html" id="registerLink" class="btn-nav">注册</a>
+      <button class="logout-btn hidden" id="logoutBtn">退出登录</button>
+    </nav>
+  </header>
+
+  
+  <main class="page-container">
+    <section class="page-title">
+      <p class="eyebrow">About Project</p>
+      <h1>关于 CityGo 城市旅行介绍网</h1>
+      <p>本项目前端页面围绕城市旅游介绍展开，使用 HTML、CSS、JavaScript 实现页面结构、视觉设计和交互功能。</p>
+    </section>
+
+    <section class="article-card">
+      <h2>项目功能组成</h2>
+      <p>网站包含首页展示、城市分类筛选、关键词搜索、城市详情弹窗、旅行路线切换、用户注册、用户登录、心愿单收藏等模块。</p>
+      <h2>设计亮点</h2>
+      <p>页面采用卡片化布局、渐变背景、圆角阴影和响应式排版，适合展示城市风景、美食文化与旅行路线等内容。</p>
+      <h2>技术说明</h2>
+      <p>注册、登录和收藏功能使用 localStorage 进行前端模拟存储，不依赖后端服务器，便于课程作业演示。</p>
+      <h2>热门城市旅行热度（Canvas 统计图）</h2>
+      <p>基于用户收藏数据模拟的旅行热度示意，使用 Canvas 绘制。</p>
+      <canvas id="travelChart" width="800" height="400" style="width:100%; height:auto; max-width:800px; background:#f9faff; border-radius:20px; margin-top:16px;"></canvas>
+    </section>
+  </main>
+
+  
+  
+  <footer>
+    <div class="footer-content">
+      <div class="footer-col">
+        <div class="logo" style="font-size: var(--text-lg);">CityGo<span>城市旅行</span></div>
+        <p>© 2026 CityGo 城市旅行介绍网</p>
+        <p>前端课程大作业示例</p>
+      </div>
+      <div class="footer-col">
+        <h4>技术支持</h4>
+        <p>Powered by HTML5/CSS3/JavaScript</p>
+        <p>本地存储模拟数据库</p>
+        <p>响应式设计适配移动端</p>
+      </div>
+      <div class="footer-col">
+        <h4>分享与关注</h4>
+        <div class="share-links">
+          <a href="#">微博</a>
+          <a href="#">微信</a>
+          <a href="#">小红书</a>
+        </div>
+        <p>邮箱: citygo@ogytic.com</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function drawTravelChart() {
+      const canvas = document.getElementById('travelChart');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      
+      const container = canvas.parentElement;
+      const computedStyle = getComputedStyle(canvas);
+      let width = parseInt(computedStyle.width);
+      if (isNaN(width) || width < 100) width = 800;
+      canvas.width = width;
+      canvas.height = width * 0.5;
+      
+      const cities = ['成都', '杭州', '北京', '上海', '厦门', '重庆'];
+      const heatData = [92, 88, 96, 85, 79, 91];
+      const colors = ['#1677ff', '#36a2eb', '#ff9f43', '#8e44ad', '#2ecc71', '#e67e22'];
+      
+      const barWidth = canvas.width / (cities.length + 0.5) * 0.7;
+      const startX = canvas.width * 0.1;
+      const maxHeight = canvas.height * 0.6;
+      const bottomY = canvas.height - 40;
+      
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = '#f9faff';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      
+      for (let i = 0; i < cities.length; i++) {
+        const barHeight = (heatData[i] / 100) * maxHeight;
+        const x = startX + i * (barWidth + 20);
+        const y = bottomY - barHeight;
+        
+        ctx.fillStyle = colors[i % colors.length];
+        ctx.fillRect(x, y, barWidth, barHeight);
+        
+        ctx.fillStyle = '#1f2937';
+        ctx.font = '14px "Microsoft YaHei"';
+        ctx.fillText(heatData[i], x + barWidth/3, y - 5);
+        
+        ctx.save();
+        ctx.translate(x + barWidth/2, bottomY + 15);
+        ctx.rotate(-0.3);
+        ctx.fillStyle = '#4b5563';
+        ctx.font = '12px "Microsoft YaHei"';
+        ctx.fillText(cities[i], 0, 0);
+        ctx.restore();
+      }
+      
+      ctx.beginPath();
+      ctx.strokeStyle = '#aaa';
+      ctx.lineWidth = 1;
+      ctx.moveTo(startX - 5, bottomY);
+      ctx.lineTo(canvas.width - 20, bottomY);
+      ctx.moveTo(startX - 5, bottomY);
+      ctx.lineTo(startX - 5, 30);
+      ctx.stroke();
+      
+      ctx.fillStyle = '#1677ff';
+      ctx.font = 'bold 16px "Microsoft YaHei"';
+      ctx.fillText('城市旅行热度指数', canvas.width/2 - 100, 30);
+    }
+    
+    window.addEventListener('load', drawTravelChart);
+    window.addEventListener('resize', drawTravelChart);
+  </script>
+  
+  <script src="user-nav.js"></script>
+  <script src="scroll-reveal.js"></script>
+</body>
+</html>

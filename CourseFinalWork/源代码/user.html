@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+<head>
+  
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>用户页面 - CityGo</title>
+  <link rel="stylesheet" href="css/common.css" />
+  <link rel="stylesheet" href="css/user.css" />
+</head>
+<body class="user-body">
+  
+  <header class="topbar">
+    <div class="logo">CityGo<span>城市旅行</span></div>
+    <nav>
+      <a href="index.html">首页</a>
+      <a href="footprint.html">旅行足迹</a>
+      <a href="diary.html">旅行日记</a>
+      <a href="wishlist.html">心愿单</a>
+      <a href="category.html">分类浏览</a>
+      <a href="about.html">关于网站</a>
+      <a href="contact.html">联系我们</a>
+      <a href="login.html" id="loginLink" class="active">登录</a>
+      <a href="register.html" id="registerLink" class="btn-nav">注册</a>
+      <button class="logout-btn hidden" id="logoutBtn">退出登录</button>
+    </nav>
+  </header>
+
+  
+  <main class="page-container user-page-container">
+    
+    <section id="userPageRoot" class="user-page-root">
+      <section class="user-empty-card user-force-visible">
+        <div class="user-avatar large" data-initial="?">
+          <span class="avatar-fallback-text">?</span>
+        </div>
+        <h1>用户页面加载中</h1>
+        <p>如果长时间停留在此处，请确认 user.js 与 user.html 放在同一目录下，并使用本压缩包中的正式文件名。</p>
+        <div class="user-actions">
+          <a class="primary-btn" href="login.html">去登录</a>
+          <a class="ghost-btn" href="index.html">返回首页</a>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  
+  <footer>
+    <div class="footer-content">
+      <div class="footer-col">
+        <div class="logo" style="font-size: var(--text-lg);">CityGo<span>城市旅行</span></div>
+        <p>© 2026 CityGo 城市旅行介绍网</p>
+        <p>前端课程大作业示例</p>
+      </div>
+      <div class="footer-col">
+        <h4>技术支持</h4>
+        <p>HTML5 / CSS3 / JavaScript</p>
+        <p>localStorage 模拟用户数据</p>
+        <p>响应式布局 · 用户中心页面</p>
+      </div>
+      <div class="footer-col">
+        <h4>快捷入口</h4>
+        <div class="share-links">
+          <a href="wishlist.html">心愿单</a>
+          <a href="category.html">分类</a>
+          <a href="contact.html">留言</a>
+        </div>
+        <p>📧 citygo@example.com</p>
+      </div>
+    </div>
+  </footer>
+
+  
+  <script src="user.js"></script>
+  <script src="user-nav.js"></script>
+  <script src="scroll-reveal.js"></script>
+</body>
+</html>

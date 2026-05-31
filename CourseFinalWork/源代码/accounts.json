@@ -1,0 +1,57 @@
+[
+  {
+    "username": "travel01",
+    "email": "travel01@example.com",
+    "password": "Tgo123456",
+    "phone": "16545677207",
+    "gender": "女",
+    "birthday": "2009-03-14",
+    "city": "长春",
+    "bio": "喜欢记录城市街景、自然风光与慢节奏旅行。",
+    "registerDate": "2026-03-26"
+  },
+  {
+    "username": "cityfan",
+    "email": "cityfan@example.com",
+    "password": "City2026",
+    "phone": "16558514057",
+    "gender": "女",
+    "birthday": "2012-09-16",
+    "city": "合肥",
+    "bio": "偏爱现代都市、历史街区和城市夜景路线。",
+    "registerDate": "2026-04-16"
+  },
+  {
+    "username": "foodlover",
+    "email": "foodlover@example.com",
+    "password": "Food8888",
+    "phone": "13897266951",
+    "gender": "男",
+    "birthday": "2012-11-21",
+    "city": "昆明",
+    "bio": "热衷寻找地道小吃、早茶、火锅和地方特色餐馆。",
+    "registerDate": "2026-04-18"
+  },
+  {
+    "username": "scenery",
+    "email": "scenery@example.com",
+    "password": "View6666",
+    "phone": "19560875610",
+    "gender": "男",
+    "birthday": "2004-07-03",
+    "city": "贵阳",
+    "bio": "喜欢海滨、湖泊、山林和适合拍照的城市风景。",
+    "registerDate": "2026-04-14"
+  },
+  {
+    "username": "demo",
+    "email": "demo@example.com",
+    "password": "demo123456",
+    "phone": "16557437495",
+    "gender": "女",
+    "birthday": "2002-04-12",
+    "city": "广州",
+    "bio": "用于课程展示和功能测试，可体验登录、用户页和心愿单功能。",
+    "registerDate": "2026-04-07"
+  }
+]

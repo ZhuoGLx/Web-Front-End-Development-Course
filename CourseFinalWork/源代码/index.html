@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+<head>
+  
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CityGo 城市旅行介绍网</title>
+  <link rel="stylesheet" href="css/common.css" />
+  <link rel="stylesheet" href="css/index.css" />
+</head>
+<body>
+  
+  <header class="topbar">
+    <div class="logo">CityGo<span>城市旅行</span></div>
+    <nav>
+      <a href="index.html" class="active">首页</a>
+      <a href="footprint.html">旅行足迹</a>
+      <a href="diary.html">旅行日记</a>
+      <a href="wishlist.html">心愿单</a>
+      <a href="category.html">分类浏览</a>
+      <a href="about.html">关于网站</a>
+      <a href="contact.html">联系我们</a>
+      <a href="login.html" id="loginLink">登录</a>
+      <a href="register.html" id="registerLink" class="btn-nav">注册</a>
+      <button class="logout-btn hidden" id="logoutBtn">退出登录</button>
+    </nav>
+  </header>
+
+  
+  <section id="heroSection" class="hero">
+    <div class="hero-content">
+      <p class="eyebrow">城市 · 风景 · 美食 · 路线</p>
+      <h1>发现值得奔赴的城市风景</h1>
+      <p class="hero-text">从山水街巷到城市烟火，从地道美食到精选路线，CityGo 帮你快速发现不同城市的独特气质，收藏心动目的地，规划下一段值得出发的旅程。</p>
+      <div class="hero-actions">
+        <a href="#citySection" class="primary-btn">开始探索</a>
+        <a href="wishlist.html" class="ghost-btn">查看心愿单</a>
+      </div>
+    </div>
+    <div class="hero-card hero-slider" id="heroSlider">
+      <button class="hero-slide-btn hero-slide-prev" id="heroPrev" aria-label="上一张风景图"></button>
+      <div class="hero-image-window">
+        <img id="heroImage" src="resource/images/hangzhou/hangzhou_westlake_morning.jpg" alt="旅行风景图" />
+      </div>
+      <button class="hero-slide-btn hero-slide-next" id="heroNext" aria-label="下一张风景图"></button>
+      <div class="hero-card-info">
+        <strong id="heroTitle">杭州 · 西湖晨光</strong>
+        <span id="heroDesc">西湖、茶园与江南水汽交织成温柔风景</span>
+      </div>
+      <div class="hero-dots" id="heroDots" aria-label="风景轮播指示点"></div>
+    </div>
+  </section>
+
+  
+  <main>
+    
+    <section class="video-section">
+      <div class="section-title-row">
+        <div>
+          <p class="eyebrow">Travel Moments</p>
+          <h2>风景名胜精彩视频</h2>
+          <p>跟随镜头，一分钟看遍中国最美城市风光。</p>
+        </div>
+      </div>
+      <div class="video-container">
+        
+        
+        <video id="sceneryVideo" src="resource/images/index_video.mp4" controls autoplay loop playsinline preload="auto">
+          您的浏览器不支持 video 标签。
+        </video>
+      </div>
+    </section>
+
+    
+    <section id="citySection" class="city-section">
+      <div class="section-title-row">
+        <div>
+          <p class="eyebrow">Explore Cities</p>
+          <h2>热门城市推荐</h2>
+        </div>
+        <div class="search-box">
+          <input type="text" id="searchInput" placeholder="搜索城市、美食或特色..." />
+        </div>
+      </div>
+
+      <div class="filter-bar">
+        <button class="filter-btn active" data-type="all">全部</button>
+        <button class="filter-btn" data-type="food">美食城市</button>
+        <button class="filter-btn" data-type="nature">自然风光</button>
+        <button class="filter-btn" data-type="history">历史文化</button>
+        <button class="filter-btn" data-type="modern">现代都市</button>
+      </div>
+
+      <div class="city-layout">
+        <div class="city-grid" id="cityGrid"></div>
+        <aside class="sidebar">
+            <div class="sidebar-card">
+              <h3>✨ 拖放到这里收藏</h3>
+              <p>将任意城市卡片拖拽到此区域，即可加入心愿单（需要登录）。</p>
+              <div id="dropZone" class="drop-zone" dropzone="move">
+                📥 拖放区域
+              </div>
+              <div class="sidebar-divider"></div>
+              <h3>🔥 热门推荐</h3>
+              <ul class="hot-list">
+                <a href="city.html?id=chengdu&from=route"><li>成都 · 美食之都</li></a>
+                <a href="city.html?id=hangzhou&from=route"><li>杭州 · 西湖漫步</li></a>
+                <a href="city.html?id=beijing&from=route"><li>北京 · 故宫长城</li></a>
+              </ul>
+            </div>
+        </aside>
+      </div>
+      <div class="pagination" id="pagination">
+        <button class="page-btn prev" id="prevPageBtn" disabled>‹ 上一页</button>
+        <span class="page-info" id="pageInfo">第1页 / 共1页</span>
+        <button class="page-btn next" id="nextPageBtn" disabled>下一页 ›</button>
+      </div>
+    </section>
+
+    
+    <section id="routeSection" class="route-section">
+      <div class="route-info">
+        <p class="eyebrow">Travel Plan</p>
+        <h2>智能旅行路线切换</h2>
+        <p>从短途打卡到深度漫游，按不同出行时长整理路线灵感，帮助你更轻松地规划城市旅程。</p>
+      </div>
+      <div class="route-card">
+        <div class="route-tabs">
+          <button class="route-btn active" data-route="one">一日游</button>
+          <button class="route-btn" data-route="three">三日游</button>
+          <button class="route-btn" data-route="deep">深度游</button>
+        </div>
+        <div id="routeContent" class="route-content"></div>
+      </div>
+    </section>
+  </main>
+
+  
+
+  
+  <footer>
+    <div class="footer-content">
+      <div class="footer-col">
+        <div class="logo" style="font-size: var(--text-lg);">CityGo<span>城市旅行</span></div>
+        <p>© 2026 CityGo 城市旅行介绍网</p>
+        <p>前端课程大作业示例</p>
+      </div>
+      <div class="footer-col">
+        <h4>技术支持</h4>
+        <p>Powered by HTML5/CSS3/JavaScript</p>
+        <p>本地存储模拟数据库</p>
+        <p>响应式设计适配移动端</p>
+      </div>
+      <div class="footer-col">
+        <h4>分享与关注</h4>
+        <div class="share-links">
+          <a href="#">微博</a>
+          <a href="#">微信</a>
+          <a href="#">小红书</a>
+        </div>
+        <p>邮箱: citygo@ogytic.com</p>
+      </div>
+    </div>
+  </footer>
+
+  
+  <div id="floatingAd" class="floating-ad">
+    <div class="floating-ad-content">
+      <button class="floating-ad-close" id="closeAdBtn">×</button>
+      <p>✈️ 暑期特惠</p>
+      <p>热门城市路线 <strong>8折起</strong></p>
+      <a href="#citySection" class="small-btn">立即查看</a>
+    </div>
+  </div>
+  
+  <script src="city-modal.js"></script>
+  <script src="script.js"></script>
+
+  
+  
+  <script src="user-nav.js"></script>
+  <script src="scroll-reveal.js"></script>
+</body>
+</html>

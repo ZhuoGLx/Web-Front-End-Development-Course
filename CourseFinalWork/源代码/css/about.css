@@ -1,0 +1,43 @@
+
+
+.article-card {
+  background: rgba(255, 255, 255, 0.94);
+  border: 1px solid rgba(255, 255, 255, 0.82);
+  box-shadow: 0 22px 54px rgba(31, 64, 125, 0.12);
+  backdrop-filter: blur(18px);
+}
+
+.article-card {
+  width: 100%;
+  padding: 34px;
+  border-radius: 28px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.94);
+  border: 1px solid rgba(255, 255, 255, 0.82);
+  box-shadow: 0 22px 54px rgba(31, 64, 125, 0.12);
+  backdrop-filter: blur(18px);
+  text-align: left;
+}
+
+.article-card h2,
+.article-card p,
+.article-card canvas {
+  max-width: 100%;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.article-card h2:first-child {
+  margin-top: 0;
+}
+
+.article-card p {
+  color: var(--muted);
+}
+
+@media (max-width: 640px) {
+  .article-card {
+    padding: 26px 20px;
+    border-radius: 24px;
+  }
+}

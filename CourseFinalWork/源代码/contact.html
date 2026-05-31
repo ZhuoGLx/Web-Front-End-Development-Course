@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+<head>
+  
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>联系我们 - CityGo</title>
+  <link rel="stylesheet" href="css/common.css" />
+  <link rel="stylesheet" href="css/contact.css" />
+</head>
+<body>
+  
+  <header class="topbar">
+    <div class="logo">CityGo<span>城市旅行</span></div>
+    <nav>
+      <a href="index.html">首页</a>
+      <a href="footprint.html">旅行足迹</a>
+      <a href="diary.html">旅行日记</a>
+      <a href="wishlist.html">心愿单</a>
+      <a href="category.html">分类浏览</a>
+      <a href="about.html">关于网站</a>
+      <a href="contact.html" class="active">联系我们</a>
+      <a href="login.html" id="loginLink">登录</a>
+      <a href="register.html" id="registerLink" class="btn-nav">注册</a>
+      <button class="logout-btn hidden" id="logoutBtn">退出登录</button>
+    </nav>
+  </header>
+
+  
+  <main class="page-container">
+    <section class="page-title contact-title-card">
+      <p class="eyebrow">Get In Touch</p>
+      <h1>联系我们</h1>
+      <p>CityGo 致力于为旅行爱好者提供最实用的城市指南。如果您有任何建议、合作意向或使用问题，欢迎填写下方表单，我们会尽快回复。</p>
+    </section>
+
+    <section class="article-card contact-form-card">
+      <h2>给我们留言</h2>
+      <p>请填写以下信息，您的反馈将帮助我们做得更好。</p>
+
+      
+      <form id="contactForm">
+        <div style="margin-bottom: 18px;">
+          <label for="name">姓名：<span style="color:#e74c3c;">*</span></label>
+          <input type="text" id="name" name="name" placeholder="请输入您的姓名" style="width:100%; padding: 12px; margin-top: 6px; border-radius: 14px; border:1px solid #e5e7eb;" />
+          <span class="error" id="nameError"></span>
+        </div>
+
+        <div class="gender-field" style="margin-bottom: 18px;">
+          <label>性别：<span style="color:#e74c3c;">*</span></label>
+          <div class="gender-options">
+            <label><input type="radio" name="gender" value="男" /> 男</label>
+            <label><input type="radio" name="gender" value="女" /> 女</label>
+            <label><input type="radio" name="gender" value="不愿透露" /> 不愿透露</label>
+          </div>
+          <span class="error" id="genderError"></span>
+        </div>
+
+        <div style="margin-bottom: 18px;">
+          <label for="age">年龄范围：<span style="color:#e74c3c;">*</span></label>
+          <select id="age" style="width:100%; padding: 12px; margin-top: 6px; border-radius: 14px; border:1px solid #e5e7eb; background: white;">
+            <option value="">请选择</option>
+            <option value="18岁以下">18岁以下</option>
+            <option value="18-25岁">18-25岁</option>
+            <option value="26-35岁">26-35岁</option>
+            <option value="36-50岁">36-50岁</option>
+            <option value="50岁以上">50岁以上</option>
+          </select>
+          <span class="error" id="ageError"></span>
+        </div>
+
+        <div style="margin-bottom: 18px;">
+          <label for="email">电子邮件：<span style="color:#e74c3c;">*</span></label>
+          <input type="email" id="email" name="email" placeholder="example@domain.com" style="width:100%; padding: 12px; margin-top: 6px; border-radius: 14px; border:1px solid #e5e7eb;" />
+          <span class="error" id="emailError"></span>
+        </div>
+
+        <div style="margin-bottom: 18px;">
+          <label for="phone">电话号码：<span style="color:#e74c3c;">*</span></label>
+          <input type="tel" id="phone" name="phone" placeholder="手机号 / 固话" style="width:100%; padding: 12px; margin-top: 6px; border-radius: 14px; border:1px solid #e5e7eb;" />
+          <span class="error" id="phoneError"></span>
+        </div>
+
+        <div style="margin-bottom: 18px;">
+          <label for="message">反馈内容：<span style="color:#e74c3c;">*</span></label>
+          <textarea id="message" rows="5" placeholder="请写下您的建议、问题或合作意向..." style="width:100%; padding: 12px; margin-top: 6px; border-radius: 14px; border:1px solid #e5e7eb; resize: vertical;"></textarea>
+          <span class="error" id="messageError"></span>
+        </div>
+
+        <button type="submit" class="primary-btn full" style="margin-top: 10px;">提交反馈</button>
+      </form>
+
+      <div id="submitResult" style="margin-top: 28px; padding: 18px; border-radius: 20px; background: #f0f9ff; border-left: 6px solid #1677ff; display: none;">
+        
+      </div>
+    </section>
+  </main>
+
+  
+  <footer>
+    <div class="footer-content">
+      <div class="footer-col">
+        <div class="logo" style="font-size: var(--text-lg);">CityGo<span>城市旅行</span></div>
+        <p>© 2026 CityGo 城市旅行介绍网</p>
+        <p>前端课程大作业示例</p>
+      </div>
+      <div class="footer-col">
+        <h4>技术支持</h4>
+        <p>Powered by HTML5/CSS3/JavaScript</p>
+        <p>本地存储模拟数据库</p>
+        <p>响应式设计适配移动端</p>
+      </div>
+      <div class="footer-col">
+        <h4>分享与关注</h4>
+        <div class="share-links">
+          <a href="#">微博</a>
+          <a href="#">微信</a>
+          <a href="#">小红书</a>
+        </div>
+        <p>邮箱: citygo@ogytic.com</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const form = document.getElementById('contactForm');
+    const resultDiv = document.getElementById('submitResult');
+
+    function isValidPhone(phone) {
+      const phoneRegex = /^1[3-9]\d{9}$/;
+      return phoneRegex.test(phone);
+    }
+
+    function clearContactValidationState() {
+      document.querySelectorAll('.error').forEach(el => el.innerText = '');
+      form.querySelectorAll('.input-error').forEach(el => el.classList.remove('input-error'));
+    }
+
+    function markContactError(errorId, message, target, state) {
+      const errorEl = document.getElementById(errorId);
+      if (errorEl) errorEl.innerText = message;
+      const targetEl = typeof target === 'string' ? document.getElementById(target) : target;
+      if (targetEl && targetEl.classList) targetEl.classList.add('input-error');
+      if (!state.firstInvalidTarget && targetEl) state.firstInvalidTarget = targetEl;
+    }
+
+    function scrollToFirstInvalidField(target) {
+      if (!target) return;
+      target.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' });
+      if (typeof target.focus === 'function') {
+        window.setTimeout(() => target.focus({ preventScroll: true }), 360);
+      }
+    }
+
+    function isValidEmail(email) {
+      const emailRegex = /^[^\s@]+@([^\s@]+\.)+[^\s@]+$/;
+      return emailRegex.test(email);
+    }
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      clearContactValidationState();
+      let isValid = true;
+      const validationState = { firstInvalidTarget: null };
+
+      const name = document.getElementById('name').value.trim();
+      const genderRadios = document.querySelectorAll('input[name="gender"]');
+      let gender = '';
+      for (let radio of genderRadios) {
+        if (radio.checked) { gender = radio.value; break; }
+      }
+      const age = document.getElementById('age').value;
+      const email = document.getElementById('email').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const message = document.getElementById('message').value.trim();
+
+      if (name === '') {
+        markContactError('nameError', '姓名不能为空', 'name', validationState);
+        isValid = false;
+      }
+
+      if (gender === '') {
+        markContactError('genderError', '请选择性别，或选择“不愿透露”', document.querySelector('.gender-field'), validationState);
+        isValid = false;
+      }
+
+      if (age === '') {
+        markContactError('ageError', '请选择年龄范围', 'age', validationState);
+        isValid = false;
+      }
+
+      if (email === '') {
+        markContactError('emailError', '邮箱不能为空', 'email', validationState);
+        isValid = false;
+      } else if (!isValidEmail(email)) {
+        markContactError('emailError', '请输入有效的邮箱地址（例如 name@example.com）', 'email', validationState);
+        isValid = false;
+      }
+
+      if (phone === '') {
+        markContactError('phoneError', '电话号码不能为空', 'phone', validationState);
+        isValid = false;
+      } else if (!isValidPhone(phone)) {
+        markContactError('phoneError', '请输入有效的11位手机号码', 'phone', validationState);
+        isValid = false;
+      }
+
+      if (message === '') {
+        markContactError('messageError', '反馈内容不能为空', 'message', validationState);
+        isValid = false;
+      }
+
+      if (!isValid) {
+        scrollToFirstInvalidField(validationState.firstInvalidTarget);
+        return;
+      }
+
+      const genderDisplay = gender;
+      const ageDisplay = age;
+
+      const resultHtml = `
+        <strong style="font-size: var(--text-lg);">📋 提交成功！</strong><br/><br/>
+        <p><strong>姓名：</strong> ${escapeHtml(name)}</p>
+        <p><strong>性别：</strong> ${escapeHtml(genderDisplay)}</p>
+        <p><strong>年龄：</strong> ${escapeHtml(ageDisplay)}</p>
+        <p><strong>电子邮件：</strong> ${escapeHtml(email)}</p>
+        <p><strong>电话号码：</strong> ${escapeHtml(phone)}</p>
+        <p><strong>反馈内容：</strong> ${escapeHtml(message)}</p>
+        <p style="color: #19a15f; margin-top: 16px;">🌟 感谢您的提交！我们会尽快处理您的反馈。</p>
+      `;
+      resultDiv.innerHTML = resultHtml;
+      resultDiv.style.display = 'block';
+
+      resultDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    });
+
+    function escapeHtml(str) {
+      return str.replace(/[&<>]/g, function(m) {
+        if (m === '&') return '&amp;';
+        if (m === '<') return '&lt;';
+        if (m === '>') return '&gt;';
+        return m;
+      }).replace(/[\uD800-\uDBFF][\uDC00-\uDFFF]/g, function(c) {
+        return c;
+      });
+    }
+  </script>
+  
+  <script src="user-nav.js"></script>
+  <script src="scroll-reveal.js"></script>
+</body>
+</html>

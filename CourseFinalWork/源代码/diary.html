@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>旅行日记 - CityGo</title>
+  <link rel="stylesheet" href="css/common.css" />
+  <link rel="stylesheet" href="css/diary.css" />
+</head>
+<body>
+  
+  <header class="topbar">
+    <div class="logo">CityGo<span>城市旅行</span></div>
+    <nav>
+      <a href="index.html">首页</a>
+      <a href="footprint.html">旅行足迹</a>
+      <a href="diary.html" class="active">旅行日记</a>
+      <a href="wishlist.html">心愿单</a>
+      <a href="category.html">分类浏览</a>
+      <a href="about.html">关于网站</a>
+      <a href="contact.html">联系我们</a>
+      <a href="login.html" id="loginLink">登录</a>
+      <a href="register.html" id="registerLink" class="btn-nav">注册</a>
+      <button class="logout-btn hidden" id="logoutBtn">退出登录</button>
+    </nav>
+  </header>
+
+  
+  <main class="page-container diary-page">
+
+    
+    <section class="diary-header">
+      <div class="diary-title-block">
+        <p class="eyebrow">Travel Diary</p>
+        <h1>旅行日记</h1>
+        <button class="primary-btn diary-title-action" id="diaryNewBtn">✏️ 写日记</button>
+        <p>记录旅途中的美好瞬间</p>
+      </div>
+    </section>
+
+    
+    <section id="diaryAlbumSection" class="diary-album-section hidden" aria-label="旅行日记媒体图片册">
+      <div class="diary-album-copy">
+        <p class="eyebrow">Memory Album</p>
+        <h2>旅途影像册</h2>
+        <p>汇集日记中的图片与视频封面，拖动或悬停查看立体旋转效果。</p>
+      </div>
+      <div class="diary-album-stage" id="diaryAlbumStage">
+        <div class="diary-album-track" id="diaryAlbumTrack"></div>
+      </div>
+      <div class="diary-album-controls">
+        <button type="button" class="ghost-btn" id="diaryAlbumPrev">上一张</button>
+        <button type="button" class="ghost-btn" id="diaryAlbumNext">下一张</button>
+      </div>
+    </section>
+
+    
+    <section id="diaryGrid" class="diary-grid">
+      
+    </section>
+
+    
+    <div id="diaryEditorOverlay" class="diary-editor-overlay hidden">
+      <div class="diary-editor-modal">
+        <div class="diary-editor-header">
+          <h2 id="diaryEditorTitle">写日记</h2>
+          <button class="diary-editor-close" id="diaryEditorClose">&times;</button>
+        </div>
+        <form id="diaryEditorForm" class="diary-editor-form">
+          <input type="hidden" id="diaryEditId" value="" />
+          <div class="diary-field">
+            <label for="diaryTitle">标题</label>
+            <input type="text" id="diaryTitle" placeholder="给这篇日记起个标题..." maxlength="60" required />
+          </div>
+          <div class="diary-field">
+            <label for="diaryCity">关联城市（选填）</label>
+            <select id="diaryCity">
+              <option value="">不关联城市</option>
+              <option value="beijing">北京</option>
+              <option value="shanghai">上海</option>
+              <option value="guangzhou">广州</option>
+              <option value="hangzhou">杭州</option>
+              <option value="chengdu">成都</option>
+              <option value="chongqing">重庆</option>
+              <option value="nanjing">南京</option>
+              <option value="xian">西安</option>
+              <option value="xiamen">厦门</option>
+            </select>
+          </div>
+          <div class="diary-field">
+            <label for="diaryContentEditor">内容</label>
+            <div class="diary-rich-toolbar">
+              <span>在光标处输入文字，上传图片后可点击“插入正文”。</span>
+              <button type="button" class="ghost-btn diary-toolbar-btn" id="diaryInsertAllImages">插入全部图片</button>
+            </div>
+            <div id="diaryContentEditor" class="diary-content-editor" contenteditable="true" data-placeholder="记录今天的旅行故事，可在文字中插入图片..."></div>
+            <textarea id="diaryContent" hidden></textarea>
+          </div>
+          <div class="diary-field">
+            <label>日记图片（可选，每张不超过2MB）</label>
+            <div class="diary-image-upload">
+              <label class="diary-upload-btn" for="diaryImageInput">
+                📷 选择图片
+              </label>
+              <input type="file" id="diaryImageInput" accept="image/*" multiple hidden />
+              <span class="diary-upload-hint" id="diaryImageHint">未选择文件</span>
+            </div>
+            
+            <div id="diaryImagePreview" class="diary-image-preview hidden"></div>
+          </div>
+          <div class="diary-field">
+            <label>日记封面（可选，未上传时自动使用正文第一张图片）</label>
+            <div class="diary-image-upload">
+              <label class="diary-upload-btn diary-cover-btn" for="diaryCoverInput">
+                🖼️ 选择封面
+              </label>
+              <input type="file" id="diaryCoverInput" accept="image/*" hidden />
+              <span class="diary-upload-hint" id="diaryCoverHint">自动选择第一张图片</span>
+            </div>
+            <div id="diaryCoverPreview" class="diary-cover-preview hidden"></div>
+          </div>
+          <div class="diary-editor-actions">
+            <button type="button" class="ghost-btn" id="diaryEditorCancel">取消</button>
+            <button type="submit" class="primary-btn" id="diaryEditorSubmit">发布日记</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    
+    <div id="diaryDetailOverlay" class="diary-detail-overlay hidden">
+      <div class="diary-detail-modal">
+        <button class="diary-detail-close" id="diaryDetailClose">&times;</button>
+        <div id="diaryDetailContent">
+          
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  
+  <footer>
+    <div class="footer-content">
+      <div class="footer-col">
+        <div class="logo" style="font-size: var(--text-lg);">CityGo<span>城市旅行</span></div>
+        <p>© 2026 CityGo 城市旅行介绍网</p>
+        <p>前端课程大作业示例</p>
+      </div>
+      <div class="footer-col">
+        <h4>技术支持</h4>
+        <p>HTML5 / CSS3 / JavaScript</p>
+        <p>localStorage 日记存储</p>
+        <p>Base64 图片编码</p>
+      </div>
+      <div class="footer-col">
+        <h4>快捷入口</h4>
+        <div class="share-links">
+          <a href="wishlist.html">心愿单</a>
+          <a href="footprint.html">足迹</a>
+          <a href="contact.html">留言</a>
+        </div>
+        <p>📧 citygo@example.com</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="seed-data.js"></script>
+  <script src="diary.js"></script>
+  <script src="user-nav.js"></script>
+  <script src="scroll-reveal.js"></script>
+</body>
+</html>

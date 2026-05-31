@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+<head>
+  
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>旅行心愿单 - CityGo</title>
+  <link rel="stylesheet" href="css/common.css" />
+  <link rel="stylesheet" href="css/wishlist.css" />
+</head>
+<body>
+  
+  <header class="topbar">
+    <div class="logo">CityGo<span>城市旅行</span></div>
+    <nav>
+      <a href="index.html">首页</a>
+      <a href="footprint.html">旅行足迹</a>
+      <a href="diary.html">旅行日记</a>
+      <a href="wishlist.html" class="active">心愿单</a>
+      <a href="category.html">分类浏览</a>
+      <a href="about.html">关于网站</a>
+      <a href="contact.html">联系我们</a>
+      <a href="login.html" id="loginLink">登录</a>
+      <a href="register.html" id="registerLink" class="btn-nav">注册</a>
+      <button class="logout-btn hidden" id="logoutBtn">退出登录</button>
+    </nav>
+  </header>
+
+  
+  <main class="page-container">
+    <section class="page-title">
+      <p class="eyebrow">My Travel List</p>
+      <h1>我的旅行心愿单</h1>
+      <p>这里会显示你在首页收藏的城市，可用于规划后续旅行。</p>
+    </section>
+
+    <section class="wishlist-panel">
+      
+      <div id="wishlistBox" class="wishlist-grid"></div>
+      <button id="clearWishlist" class="danger-btn">清空心愿单</button>
+    </section>
+  </main>
+
+  
+  <footer>
+    <div class="footer-content">
+      <div class="footer-col">
+        <div class="logo" style="font-size: var(--text-lg);">CityGo<span>城市旅行</span></div>
+        <p>© 2026 CityGo 城市旅行介绍网</p>
+        <p>前端课程大作业示例</p>
+      </div>
+      <div class="footer-col">
+        <h4>技术支持</h4>
+        <p>Powered by HTML5/CSS3/JavaScript</p>
+        <p>本地存储模拟数据库</p>
+        <p>响应式设计适配移动端</p>
+      </div>
+      <div class="footer-col">
+        <h4>分享与关注</h4>
+        <div class="share-links">
+          <a href="#">微博</a>
+          <a href="#">微信</a>
+          <a href="#">小红书</a>
+        </div>
+        <p>邮箱: citygo@ogytic.com</p>
+      </div>
+    </div>
+  </footer>
+
+  
+  <script src="seed-data.js"></script>
+  <script src="wishlist.js"></script>
+  <script src="user-nav.js"></script>
+  <script src="scroll-reveal.js"></script>
+</body>
+</html>

@@ -1,0 +1,327 @@
+
+
+.user-body {
+  background:
+    radial-gradient(circle at 12% 18%, rgba(22, 119, 255, 0.18), transparent 28%),
+    radial-gradient(circle at 88% 12%, rgba(255, 159, 67, 0.16), transparent 24%),
+    linear-gradient(135deg, #eef6ff 0%, #ffffff 48%, #fff8ef 100%);
+}
+
+.user-page-container {
+  min-height: calc(100vh - 180px);
+}
+
+.user-page-root {
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+}
+
+.user-profile-main {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.user-avatar {
+  flex: 0 0 auto;
+  width: 104px;
+  height: 104px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 32px;
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  color: #fff;
+  font-size: var(--text-2xl);
+  font-weight: 600;
+  box-shadow: 0 18px 32px rgba(22, 119, 255, 0.26);
+}
+
+.user-avatar.large {
+  width: 118px;
+  height: 118px;
+  margin: 0 auto 18px;
+  border-radius: 36px;
+}
+
+.user-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.user-dashboard-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr 1fr;
+  gap: 22px;
+}
+
+.user-info-card,
+.user-empty-card {
+  border-radius: 28px;
+  padding: 28px;
+}
+
+.user-empty-card {
+  max-width: 720px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.user-info-card h2 {
+  margin-bottom: 18px;
+  color: var(--primary-dark);
+}
+
+.user-info-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(229, 231, 235, 0.82);
+}
+
+.user-info-row:last-child {
+  border-bottom: none;
+}
+
+.user-info-row span {
+  color: var(--muted);
+}
+
+.user-info-row strong {
+  color: var(--text);
+  word-break: break-all;
+}
+
+.user-stat-number {
+  font-size: var(--text-2xl);
+  line-height: 1.5;
+  font-weight: 600;
+  color: var(--primary);
+  margin: 4px 0 12px;
+}
+
+.user-shortcut-list {
+  display: grid;
+  gap: 12px;
+}
+
+.user-shortcut-list a {
+  padding: 13px 15px;
+  border-radius: 16px;
+  background: rgba(238, 246, 255, 0.92);
+  color: var(--primary-dark);
+  font-weight: 600;
+  transition: 0.24s ease;
+}
+
+.user-shortcut-list a:hover,
+.user-name-link:hover {
+  transform: translateY(-2px);
+}
+
+.user-name-link {
+  font-weight: 600;
+  color: var(--primary);
+}
+
+.user-avatar {
+  position: relative;
+  overflow: hidden;
+}
+
+.user-avatar img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  opacity: 0;
+}
+
+.user-avatar img.is-loaded {
+  opacity: 1;
+}
+
+.user-avatar.has-avatar-img .avatar-fallback-text {
+  opacity: 0;
+}
+
+.user-logout-inline {
+  margin-top: 0;
+}
+
+.user-force-visible,
+.user-force-visible.scroll-reveal,
+.user-page-root .user-dashboard-grid {
+  opacity: 1;
+}
+
+.user-dashboard-grid-profile {
+  align-items: stretch;
+  grid-template-columns: minmax(260px, 1.08fr) minmax(260px, 1fr) minmax(260px, 0.98fr);
+  grid-template-areas:
+    "profile bio shortcut"
+    "profile travel shortcut";
+}
+
+.user-profile-info-card {
+  grid-area: profile;
+}
+
+.user-bio-card {
+  grid-area: bio;
+}
+
+.user-travel-card {
+  grid-area: travel;
+}
+
+.user-shortcut-card {
+  grid-area: shortcut;
+}
+
+.user-profile-info-card,
+.user-shortcut-card {
+  height: 100%;
+}
+
+.user-bio-text {
+  font-size: var(--text-base);
+  line-height: 1.5;
+}
+
+.user-profile-note {
+  margin-top: 18px;
+  padding: 14px 16px;
+  border-radius: 16px;
+  background: rgba(238, 246, 255, 0.95);
+  display: grid;
+  gap: 6px;
+  color: var(--muted);
+}
+
+.user-profile-note strong {
+  color: var(--primary-dark);
+}
+
+.user-page-root .user-animate-item {
+  opacity: 0;
+  animation: userCardFloatUpIn 0.72s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  will-change: opacity, transform;
+}
+
+.user-page-root .user-animate-item:nth-of-type(1) {
+  animation-delay: 0.06s;
+}
+
+.user-dashboard-grid .user-animate-item:nth-child(1) {
+  animation-delay: 0.18s;
+}
+
+.user-dashboard-grid .user-animate-item:nth-child(2) {
+  animation-delay: 0.30s;
+}
+
+.user-dashboard-grid .user-animate-item:nth-child(3) {
+  animation-delay: 0.42s;
+}
+
+.user-dashboard-grid .user-animate-item:nth-child(4) {
+  animation-delay: 0.54s;
+}
+
+.user-actions 
+.primary-btn,
+.user-actions .ghost-btn,
+.user-shortcut-list a {
+  transition:
+    transform 0.38s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.38s cubic-bezier(0.22, 1, 0.36, 1),
+    background 0.38s ease,
+    color 0.38s ease,
+    filter 0.38s ease;
+}
+
+.user-actions .primary-btn:hover,
+.user-actions .ghost-btn:hover,
+.user-shortcut-list a:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 42px rgba(22, 119, 255, 0.22);
+  filter: saturate(1.04);
+}
+
+.user-actions .primary-btn,
+.user-actions .ghost-btn,
+.user-actions .danger-btn {
+    
+    width: 180px;      
+    height: 48px;      
+    
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--text-base);
+    font-weight: 600;
+    
+    
+    padding: 0;
+    margin: 0 6px;     
+    
+    
+    border-radius: 16px;
+    
+    
+    position: relative;
+    z-index: 1;
+}
+
+@media (max-width: 480px) {
+    .user-actions .primary-btn,
+    .user-actions .ghost-btn,
+    .user-actions .danger-btn {
+        width: 150px;  
+        height: 44px;  
+        font-size: var(--text-base);
+    }
+}
+
+.user-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.user-actions a,
+.user-actions button {
+    width: 100%;
+    padding: 12px 0;
+    font-size: var(--text-base); 
+    font-weight: 600;
+    text-align: center;
+    border-radius: 12px;
+    box-sizing: border-box;
+}
+
+.danger-btn.user-logout-inline {
+    height: auto;
+    line-height: 1.5;
+    padding: 12px 0;
+    font-size: var(--text-base); 
+}
+
+:root {
+    --primary-color: #007bff;
+    --danger-color: #dc3545;
+    --success-color: #28a745;
+    --gray-200: #f8f9fa;
+    --gray-700: #495057;
+}

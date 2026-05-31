@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+<head>
+  
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>旅行足迹 - CityGo</title>
+  <link rel="stylesheet" href="css/common.css" />
+  <link rel="stylesheet" href="css/footprint.css" />
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+</head>
+<body>
+  
+  <header class="topbar">
+    <div class="logo">CityGo<span>城市旅行</span></div>
+    <nav>
+      <a href="index.html">首页</a>
+      <a href="footprint.html" class="active">旅行足迹</a>
+      <a href="diary.html">旅行日记</a>
+      <a href="wishlist.html">心愿单</a>
+      <a href="category.html">分类浏览</a>
+      <a href="about.html">关于网站</a>
+      <a href="contact.html">联系我们</a>
+      <a href="login.html" id="loginLink">登录</a>
+      <a href="register.html" id="registerLink" class="btn-nav">注册</a>
+      <button class="logout-btn hidden" id="logoutBtn">退出登录</button>
+    </nav>
+  </header>
+
+  
+  <main class="footprint-main">
+    <div id="footprintMap" class="footprint-map"></div>
+
+    
+    <section id="footprintOverlay" class="footprint-overlay hidden">
+      <div class="footprint-overlay-card">
+        <div class="footprint-overlay-icon">🗺️</div>
+        <h2 id="footprintOverlayTitle">旅行足迹地图</h2>
+        <p id="footprintOverlayDesc">登录并收藏心仪的城市后，你的足迹将自动标记在这张地图上。</p>
+        <div class="footprint-overlay-actions" id="footprintOverlayActions">
+          <a class="primary-btn" href="login.html">去登录</a>
+          <a class="ghost-btn" href="index.html#citySection">探索城市</a>
+        </div>
+      </div>
+    </section>
+
+    
+    <div id="footprintLegend" class="footprint-legend hidden">
+      <div class="legend-item">
+        <span class="legend-dot"></span>
+        <span class="legend-label">已打卡城市</span>
+      </div>
+    </div>
+  </main>
+
+  
+  <footer>
+    <div class="footer-content">
+      <div class="footer-col">
+        <div class="logo" style="font-size: var(--text-lg);">CityGo<span>城市旅行</span></div>
+        <p>© 2026 CityGo 城市旅行介绍网</p>
+        <p>前端课程大作业示例</p>
+      </div>
+      <div class="footer-col">
+        <h4>技术支持</h4>
+        <p>HTML5 / CSS3 / JavaScript</p>
+        <p>Leaflet.js 交互地图</p>
+        <p>localStorage 模拟用户数据</p>
+      </div>
+      <div class="footer-col">
+        <h4>快捷入口</h4>
+        <div class="share-links">
+          <a href="wishlist.html">心愿单</a>
+          <a href="category.html">分类</a>
+          <a href="contact.html">留言</a>
+        </div>
+        <p>📧 citygo@example.com</p>
+      </div>
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+  <script src="seed-data.js"></script>
+  <script src="footprint.js"></script>
+  <script src="user-nav.js"></script>
+  <script src="scroll-reveal.js"></script>
+</body>
+</html>

@@ -1,0 +1,85 @@
+
+
+.auth-body {
+  min-height: 100vh;
+}
+
+.auth-container {
+  min-height: calc(100vh - 74px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 8%;
+}
+
+.auth-card {
+  width: min(460px, 94vw);
+  padding: 34px;
+  border-radius: 28px;
+}
+
+.auth-card h1 {
+  font-size: var(--text-2xl);
+  margin-bottom: 10px;
+}
+
+.auth-tip,
+.switch-link {
+  color: var(--muted);
+  margin-bottom: 20px;
+}
+
+.auth-card form {
+  display: flex;
+  flex-direction: column;
+}
+
+.auth-card label {
+  margin: 10px 0 6px;
+  font-weight: 600;
+}
+
+.auth-card input {
+  padding: 13px 15px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  outline: none;
+  background: #fff;
+}
+
+.switch-link {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.switch-link a {
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.demo-account-box {
+  margin-top: 18px;
+  padding: 14px 16px;
+  color: #4b5563;
+  font-size: var(--text-sm);
+}
+
+.demo-account-box p {
+  margin-bottom: 4px;
+}
+
+.auth-body {
+  background:
+    linear-gradient(135deg, rgba(22,119,255,0.18), rgba(255,159,67,0.16)),
+    url("../resource/images/nanjing/nanjing_main.jpg") center/cover fixed;
+}
+
+.auth-card {
+  background: rgba(255, 255, 255, 0.76);
+}
+
+.auth-card .primary-btn {
+  border: 0;
+  outline: none;
+  appearance: none;
+}
