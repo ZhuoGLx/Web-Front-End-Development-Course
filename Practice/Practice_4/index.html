@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>书林图书推荐</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<!-- 页头区 -->
+<header class="site-header">
+    <div class="container header-box">
+        <div class="logo">书林</div>
+        <nav class="main-nav">
+            <ul>
+                <li><a href="#home">首页</a></li>
+                <li><a href="#featured">推荐</a></li>
+                <li><a href="#events">活动</a></li>
+                <li><a href="#contact">联系我们</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<main>
+    <!-- Banner 主视觉区 -->
+    <section id="home" class="hero">
+        <div class="container hero-box">
+            <div class="hero-text">
+                <h1>探索无限可能：精选好书等你来读</h1>
+                <p>
+                    无论你是寻找新知识，还是寻求心灵的慰藉，
+                    我们的推荐将带你进入精彩的阅读世界。
+                </p>
+                <a href="#featured" class="btn hero-btn">立即浏览</a>
+            </div>
+
+            <div class="hero-image-box">
+                <img src="./images/hero_image.jpg" alt="书林主视觉图片">
+            </div>
+        </div>
+    </section>
+
+    <!-- 推荐图书区 -->
+    <section id="featured" class="recommendations">
+        <div class="container">
+            <div class="section-title">
+                <h2><span>热门推荐图书</span></h2>
+            </div>
+            <div class="card-container">
+                <article class="card">
+                    <img src="images/book1.jpg" alt="HTML5 从入门到实践封面">
+                    <h3>HTML5 从入门到实践</h3>
+                    <p>作者：王小明｜适合零基础学习网页结构与常用标签。</p>
+                </article>
+
+                <article class="card">
+                    <img src="images/book2.jpg" alt="CSS3 视觉设计基础封面">
+                    <h3>CSS3 视觉设计基础</h3>
+                    <p>作者：李清｜讲解颜色、阴影、圆角、渐变等页面美化方法。</p>
+                </article>
+
+                <article class="card">
+                    <img src="images/book3.jpg" alt="Flex 与 Grid 布局实战封面">
+                    <h3>Flex 与 Grid 布局实战</h3>
+                    <p>作者：周林｜聚焦现代布局方式与响应式页面设计。</p>
+                </article>
+
+                <article class="card">
+                    <img src="images/book4.jpg" alt="大学生阅读清单封面">
+                    <h3>大学生阅读清单</h3>
+                    <p>作者：陈文｜帮助大学生建立长期阅读习惯。</p>
+                </article>
+
+                <article class="card">
+                    <img src="images/book5.jpg" alt="设计思维与创意表达封面">
+                    <h3>设计思维与创意表达</h3>
+                    <p>作者：赵芸｜适合设计相关专业的审美与表达训练。</p>
+                </article>
+
+                <article class="card">
+                    <img src="images/book6.jpg" alt="考研英语高频阅读封面">
+                    <h3>考研英语高频阅读</h3>
+                    <p>作者：孙晨｜帮助备考学生提升阅读能力。</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- 活动公告区 -->
+    <section id="events" class="events">
+        <div class="container">
+            <div class="section-title">
+                <h2><span>最新活动公告</span></h2>
+            </div>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                    <tr>
+                        <th>活动名称</th>
+                        <th>日期</th>
+                        <th>时间</th>
+                        <th>地点</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>新书分享会：前端开发与成长</td>
+                        <td>2026-05-12</td>
+                        <td>14:00 - 15:30</td>
+                        <td>图书馆报告厅</td>
+                    </tr>
+                    <tr>
+                        <td>阅读打卡启动仪式</td>
+                        <td>2026-05-20</td>
+                        <td>18:30 - 19:30</td>
+                        <td>博雅广场</td>
+                    </tr>
+                    <tr>
+                        <td>设计类图书主题展</td>
+                        <td>2026-05-28</td>
+                        <td>09:00 - 17:00</td>
+                        <td>校书店二层</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- 表单区 -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2><span>订阅与联系</span></h2>
+            </div>
+            <form class="contact-form" action="#" method="post">
+                <div class="input-group">
+                    <label for="name" class="required-label">姓名</label>
+                    <input type="text" id="name" name="name" placeholder="请输入您的姓名" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="email" class="required-label">邮箱</label>
+                    <input type="email" id="email" name="email" placeholder="请输入您的邮箱" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="interest">感兴趣的类型</label>
+                    <select id="interest" name="interest">
+                        <option value="">请选择类型</option>
+                        <option value="frontend">前端开发</option>
+                        <option value="literature">文学阅读</option>
+                        <option value="design">设计美学</option>
+                        <option value="exam">考研学习</option>
+                    </select>
+                </div>
+
+                <div class="input-group">
+                    <label for="message">留言</label>
+                    <textarea id="message" name="message" rows="4" placeholder="请填写您的留言..."></textarea>
+                </div>
+
+                <button type="submit" class="btn submit-btn">提交信息</button>
+            </form>
+        </div>
+    </section>
+</main>
+
+<!-- 页脚区 -->
+<footer class="site-footer">
+    <div class="container">
+        <p>© 2026 书林图书推荐 · 保留所有权利</p>
+        <p>联系方式：contact@shulin.com ｜ 0571-12345678</p>
+        <ul class="footer-links">
+            <li><a href="#home">隐私政策</a></li>
+            <li><a href="#featured">服务条款</a></li>
+            <li><a href="#events">关于我们</a></li>
+        </ul>
+    </div>
+</footer>
+</body>
+</html>

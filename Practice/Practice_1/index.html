@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>前端开发训练营</title>
+</head>
+<body>
+<header>
+  <h1>前端开发训练营 (Frontend Dev Camp)</h1>
+  <nav>
+    <ul>
+      <li><a href="#syllabus">课程(Courses)</a></li>
+      <li><a href="#consult">学员(Students)</a></li>
+      <li><a href="#video">关于(About)</a></li>
+    </ul>
+  </nav>
+</header>
+<main>
+  <div style="display: flex; gap: 20px">
+    <section id="syllabus">
+      <h2>课程教学大纲 (Course Syllabus)</h2>
+      <table border="1" width="1000">
+        <thead>
+        <tr>
+          <th rowspan="3">模块 (Module)</th>
+          <th colspan="3">课程细节 (Details)</th>
+        </tr>
+        <tr>
+          <th>主题</th>
+          <th colspan="2">核心知识点</th>
+        </tr>
+        <tr>
+          <th>(Topic)</th>
+          <th>核心知识点 (Key Concepts - UL)</th>
+          <th>实战步骤 (Practical Steps - OL)</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td rowspan="2" align="center">第一阶段：HTML5</td>
+          <td align="center">语义化与排版</td>
+          <td>
+            <ul>
+              <li>header/nav</li>
+              <li>article/section</li>
+              <li>列表嵌套</li>
+            </ul>
+          </td>
+          <td>
+            <ol>
+              <li>分析结构</li>
+              <li>搭建骨架</li>
+              <li>填充内容</li>
+            </ol>
+          </td>
+        </tr>
+        <tr>
+          <td align="center">表单与交互</td>
+          <td colspan="2" align="center">综合案例：注册页开发</td>
+        </tr>
+        </tbody>
+      </table>
+    </section>
+    <aside style="width: 250px">
+      <section id="consult">
+        <form>
+            <fieldset>
+              <legend>
+                <h3>快速咨询</h3>
+              </legend>
+              姓名（Name）:<br/><input type="text" name="name"><br/>
+
+              意向（Interest）:<br/>
+              <select name="interest">
+                <option value="job">就业（Job）</option>
+                <option value="job">兴趣（Hobby）</option>
+              </select><br/>
+
+              留言（Message）:<br/>
+              <textarea name="message" rows="3"></textarea><br/>
+
+              <button type="submit">提交</button>
+            </fieldset>
+        </form>
+      </section>
+    </aside>
+  </div>
+  <br>
+  <section id="video">
+    <h3>教学视频演示</h3>
+  </section>
+  <video src="video.mp4" width=500 controls>
+    您的浏览器不支持 HTML5 视频，请升级。
+  </video>
+</main>
+<hr/>
+<footer><p>&copy; 2026 浙江工业大学计算机学院</p></footer>
+</body>
+</html>

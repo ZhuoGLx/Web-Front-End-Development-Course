@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>实验五：学生成绩管理程序</title>
+    <script src="main.js"></script>
+</head>
+<body>
+    <h1>实验五：学生成绩管理程序</h1>
+    <p>请输入学生信息，然后点击按钮进行操作。</p>
+
+    <div>
+        姓名：<input type="text" id="name" placeholder="请输入姓名">
+        <br><br>
+        HTML成绩：<input type="text" id="htmlScore" placeholder="0-100.00">
+        <br><br>
+        CSS成绩：<input type="text" id="cssScore" placeholder="0-100.00">
+        <br><br>
+        JavaScript成绩：<input type="text" id="jsScore" placeholder="0-100.00">
+        <br><br>
+    </div>
+
+    <button onclick="showAllStudents()">显示所有学生信息</button>
+    <button onclick="findStudent()">查找指定学生信息</button>
+    <button onclick="addStudent()">增加学生信息</button>
+    <button onclick="deleteStudent()">删除指定学生信息</button>
+
+    <h3>运行结果：</h3>
+    <div id="result" style="white-space: pre-line;"></div>
+</body>
+</html>
